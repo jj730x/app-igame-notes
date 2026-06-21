@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>爱游戏体育 · 智能运动体验平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    /* 卡片模块 — 浅灰底、细边框、柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.4rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* hero 区域 */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #0f172a;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      color: #475569;
+    }
+
+    .hero .subnote {
+      font-size: 0.95rem;
+      color: #64748b;
+      border-left: 4px solid #cbd5e1;
+      padding-left: 1rem;
+      margin-top: 0.4rem;
+    }
+
+    /* 双栏网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin: 1.2rem 0 0.4rem;
+      color: #334155;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+      color: #3f4a5c;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.6rem 0 0.2rem;
+    }
+
+    .card li {
+      padding: 0.25rem 0 0.25rem 1.6rem;
+      position: relative;
+      color: #3f4a5c;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: 500;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: #1e293b;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .inline-link {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #1d4ed8;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem 1.2rem;
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    .footer-links a {
+      color: #3b4a5a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #64748b;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef2f6;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #2c3e50;
+      border: 1px solid #dee4ed;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 0.2rem 0 1.4rem;
+    }
+
+    .mt-1 {
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO 区 -->
+  <div class="card hero">
+    <h1>运动·节奏·连接<br><span>爱游戏体育</span></h1>
+    <p>一个将数据感知与运动乐趣融合的轻量平台。不只是记录，更是对运动习惯的细腻梳理 —— 从日常跑动到团队对抗，爱游戏体育帮助你在节奏中找到属于自己的运动语言。</p>
+    <div class="subnote">
+      不需要复杂配置，从移动端即可开始追踪你的运动轨迹与成长曲线。
+    </div>
+  </div>
+
+  <!-- 优势区：两栏布局 -->
+  <div class="grid-2">
+    <!-- 左侧卡片：特点与场景 -->
+    <div class="card">
+      <h2>⚙️ 场景与特点</h2>
+      <p>爱游戏体育围绕真实运动场景构建，覆盖户外跑步、室内训练及球类运动。核心侧重在运动模式识别与数据可视化。</p>
+      <ul>
+        <li><strong>多模式识别</strong> – 自动区分跑步、骑行、力量训练等基础模式，减少手动操作。</li>
+        <li><strong>轻量数据面板</strong> – 心率区间、配速曲线、卡路里估算，以简明卡片呈现。</li>
+        <li><strong>运动日志</strong> – 每次训练后生成简短总结，包含时长、距离与强度标签。</li>
+        <li><strong>离线可用</strong> – 基础记录功能无需实时联网，运动结束后同步。</li>
+      </ul>
+      <p style="margin-top: 1rem;">基于 Web 技术构建，无需安装原生应用，在浏览器中即可加载并开始记录。</p>
+    </div>
+
+    <!-- 右侧卡片：体验说明 -->
+    <div class="card">
+      <h2>📋 体验说明</h2>
+      <p>爱游戏体育的界面设计遵循克制原则：以浅灰色背景和卡片分隔信息层级，避免过度装饰。运动数据以时间轴方式排列，并支持按周、月切换。</p>
+      <p>目前处于持续迭代阶段，已开放的运动模式包括：</p>
+      <ul>
+        <li>户外跑步 · 基础版</li>
+        <li>室内骑行 · 阻力估算</li>
+        <li>力量训练 · 组间计时</li>
+        <li>自由训练 · 自定义标签</li>
+      </ul>
+      <p class="mt-1">每个模式都提供对应的摘要页，方便回顾当次表现。平台不提供医疗级测量，所有数据仅供参考与个人趋势观察。</p>
+    </div>
+  </div>
+
+  <!-- 说明区：进一步介绍背景与理念 -->
+  <div class="card">
+    <h2>🎯 从运动习惯出发</h2>
+    <p>运动的价值在于持续性，而不是单次的爆发。爱游戏体育的设计初衷是帮助使用者在日常中建立微小的记录习惯 —— 无论是晨间的 20 分钟瑜伽，还是傍晚的 5 公里慢跑。</p>
+    <p>平台不强调社交排名或勋章体系，而是把注意力放在个人纵向对比上。每次运动后，系统会生成一句简短的观察文字，比如「本周心率稳定性较上周提升约 3%」或「平均配速波动幅度降低」。这些提示由规则引擎产生，不涉及人工智能或个性化推测。</p>
+    <p>如果你正在寻找一个干净、克制的运动记录工具，不妨尝试一下  <a href="https://app-igame-sports.com" class="inline-link">爱游戏体育</a> ，它可能刚好适合你的节奏。</p>
+  </div>
+
+  <!-- FAQ 摘要区 -->
+  <div class="card">
+    <h2>❓ 常见问题摘要</h2>
+    <div class="faq-item">
+      <strong>爱游戏体育需要注册账号吗？</strong>
+      <p>目前基础记录功能无需注册，数据保存在浏览器本地。若需要跨设备同步，可选择绑定邮箱（可选功能，非强制）。</p>
+    </div>
+    <div class="faq-item">
+      <strong>运动数据准确吗？</strong>
+      <p>平台使用浏览器传感器（加速度计、GPS 等）与用户输入的身高、体重进行估算。所有数据均带有「参考值」标记，不作为医疗或训练处方依据。</p>
+    </div>
+    <div class="faq-item">
+      <strong>支持哪些设备？</strong>
+      <p>现代移动浏览器（iOS Safari、Android Chrome）及桌面 Chrome、Edge。建议开启定位权限以获得更准确的户外运动轨迹。</p>
+    </div>
+    <p style="margin-top: 0.8rem; font-size: 0.92rem; color: #55657a;">更多疑问可参考平台内「帮助」页面，或在运动摘要页提交反馈。</p>
+  </div>
+
+  <!-- 底部链接区 -->
+  <div class="card" style="padding: 1.2rem 2rem; background: #fafbfc;">
+    <div class="footer-links">
+      <span>
+        <a href="https://app-igame-sports.com" class="inline-link">爱游戏体育</a>
+        <span class="tag" style="margin-left: 0.5rem;">v0.7.2</span>
+      </span>
+      <span>
+        <a href="#">运动指南</a> · <a href="#">隐私说明</a> · <a href="#">反馈</a>
+      </span>
+    </div>
+    <hr>
+    <p style="font-size: 0.8rem; color: #75849b; letter-spacing: 0.3px; margin: 0;">运动记录 · 轻量感知 · 日常节奏</p>
+  </div>
+
+</div>
+<!-- 页面底部留白 -->
+</body>
+</html>
